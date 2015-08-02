@@ -3,7 +3,10 @@
 
 	function RangeSlider($input, options) {
 		this.$input = $input;
-		this.options = options;
+		this.options = $.extend(true, {
+			bubble: true,
+			isFormatText: true
+		}, options);
 
 		this.render();
 		this.bindEvents();
