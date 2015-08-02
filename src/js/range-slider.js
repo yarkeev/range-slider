@@ -56,7 +56,9 @@
 				});
 
 				if (this.options.bubble) {
-					this.$bubble.text(Math.round(this.value));
+					this.$bubble
+						.text(Math.round(this.value))
+						.css('margin-left', (this.$control.width() / 2) -(this.$bubble.outerWidth() / 2));
 				}
 
 				this.value = value;
