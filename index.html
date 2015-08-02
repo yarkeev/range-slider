@@ -13,6 +13,10 @@
       .container .row {
         margin-bottom: 50px;
       }
+
+      .container .row pre {
+        margin-top: 30px;
+      }
     </style>
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/yarkeev/range-slider/master/dist/range-slider.css" />
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -24,8 +28,7 @@
           end: 100,
           defaultValue: 30
         });
-      });
-      $(function () {
+
         $('#slider-2').rangeSlider({
           start: 30,
           end: 70,
@@ -50,12 +53,28 @@
           <div class="col-md-6 text-center">
             <h2>Example #1</h2>
             <input type="hidden" id="slider-1" />
+
+            <pre>
+              $('#slider-1').rangeSlider({
+                start: 0,
+                end: 100,
+                defaultValue: 30
+              });
+            </pre>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 text-center">
             <h2>Example #2</h2>
             <input type="hidden" id="slider-2" />
+
+            <pre>
+              $('#slider-2').rangeSlider({
+                start: 30,
+                end: 70,
+                defaultValue: 50
+              });
+            </pre>
           </div>
         </div>
       </div>
