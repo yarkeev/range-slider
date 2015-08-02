@@ -47,7 +47,8 @@
 
 		setValue: function (value) {
 			var width = this.$el.width(),
-				left = (value - this.options.start) * (width / (this.options.end - this.options.start));
+				left = (value - this.options.start) * (width / (this.options.end - this.options.start)),
+				text;
 
 			if (value >= this.options.start && value <= this.options.end) {
 				this.$filled.width(left);
@@ -55,14 +56,16 @@
 					left: left
 				});
 
-				if (this.options.bubble) {
-					this.$bubble
-						.text(Math.round(this.value))
-						.css('margin-left', (this.$control.width() / 2) -(this.$bubble.outerWidth() / 2));
-				}
-
 				this.value = value;
 				this.$input.val(Math.round(this.value));
+
+				if (this.options.bubble) {
+					text = this.options.isFormatText ? Math.round(this.value).toString().replace(/(\s)+/g,"").replace(/(\d{1,3})(?=(?:\d{3})+$)/g,"$1 ") : Math.round(this.value);
+
+					this.$bubble
+						.text(text)
+						.css('margin-left', (this.$control.width() / 2) -(this.$bubble.outerWidth() / 2));
+				}
 			}
 		},
 
