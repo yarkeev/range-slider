@@ -8,10 +8,10 @@
 		this.render();
 		this.bindEvents();
 
-		this.value = 0;
+		this.value = Number(this.$input.val()) || 0;
 
-		if (this.options.defaultValue) {
-			this.setValue(this.options.defaultValue);
+		if (this.$input.val()) {
+			this.setValue(this.value);
 		}
 	}
 
@@ -21,6 +21,7 @@
 			main: 'b-range-slider',
 			filled: 'b-range-slider__filled',
 			control: 'b-range-slider__control',
+			bubble: 'b-range-slider__control__bubble',
 			moveNow: 'b-range-slider_move-now'
 		},
 
@@ -35,6 +36,12 @@
 				.addClass(this.cssClasses.control)
 				.appendTo(this.$el);
 
+			if (this.options.bubble) {
+				this.$bubble = $('<div></div>')
+					.addClass(this.cssClasses.bubble)
+					.appendTo(this.$control);
+			}
+
 			this.$el.insertAfter(this.$input);
 		},
 
@@ -42,13 +49,18 @@
 			var width = this.$el.width(),
 				left = (value - this.options.start) * (width / (this.options.end - this.options.start));
 
-			if (value > this.options.start && value < this.options.end) {
+			if (value >= this.options.start && value <= this.options.end) {
 				this.$filled.width(left);
 				this.$control.css({
 					left: left
 				});
 
+				if (this.options.bubble) {
+					this.$bubble.text(Math.round(this.value));
+				}
+
 				this.value = value;
+				this.$input.val(Math.round(this.value));
 			}
 		},
 

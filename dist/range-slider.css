@@ -25,6 +25,35 @@
   border: solid 1px #b3b3b3;
   cursor: pointer;
 }
+.b-range-slider__control__bubble {
+  position: absolute;
+  top: -30px;
+  width: 100px;
+  margin-left: -45px;
+  padding: 0 10px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.b-range-slider__control__bubble:before,
+.b-range-slider__control__bubble:after {
+  content: ' ';
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -6px;
+  border: 5px solid transparent;
+}
+.b-range-slider__control__bubble:before {
+  bottom: -11px;
+  border-top-color: #ccc;
+}
+.b-range-slider__control__bubble:after {
+  bottom: -10px;
+  border-top-color: #fff;
+}
 .b-range-slider_move-now {
   -webkit-user-select: none;
   -moz-user-select: none;

@@ -18,6 +18,10 @@
 		.header {
 			padding: 5px;
 		}
+
+		h2 {
+			margin-bottom: 35px;
+		}
 	</style>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="dist/range-slider.js"></script>
@@ -26,14 +30,13 @@
 			$('#slider-1').rangeSlider({
 				start: 0,
 				end: 100,
-				defaultValue: 30
+				bubble: true
 			});
 		});
 		$(function () {
 			$('#slider-2').rangeSlider({
 				start: 30,
-				end: 70,
-				defaultValue: 50
+				end: 70
 			});
 		});
 	</script>
@@ -45,11 +48,11 @@
 		<div class="row">
 			<div class="col-md-6 text-center">
 				<h2>Example #1</h2>
-				<input type="hidden" id="slider-1" />
+				<input type="hidden" id="slider-1" value="30" />
 			</div>
 			<div class="col-md-6 text-center">
 				<h2>Example #2</h2>
-				<input type="hidden" id="slider-2" />
+				<input type="hidden" id="slider-2" value="50" />
 			</div>
 		</div>
 	</div>
