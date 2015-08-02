@@ -35,6 +35,8 @@
   border: solid 1px #ccc;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
 }
 .b-range-slider__control__bubble:before,
 .b-range-slider__control__bubble:after {
