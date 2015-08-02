@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Range slider</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="dist/range-slider.css" />
+	<style type="text/css">
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			background-color: #EFEFEF;
+		}
+
+		.header {
+			padding: 5px;
+		}
+	</style>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="dist/range-slider.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$('#slider-1').rangeSlider({
+				start: 0,
+				end: 100,
+				defaultValue: 30
+			});
+		});
+		$(function () {
+			$('#slider-2').rangeSlider({
+				start: 30,
+				end: 70,
+				defaultValue: 50
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="header bg-primary"><h1>Range slider</h1></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 text-center">
+				<h2>Example #1</h2>
+				<input type="hidden" id="slider-1" />
+			</div>
+			<div class="col-md-6 text-center">
+				<h2>Example #2</h2>
+				<input type="hidden" id="slider-2" />
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
