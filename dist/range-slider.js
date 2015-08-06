@@ -54,6 +54,7 @@
 				text;
 
 			if (value >= this.options.start && value <= this.options.end) {
+				value = Math.round(value / this.options.round) * this.options.round;
 				this.$filled.width(left);
 				this.$control.css({
 					left: left
