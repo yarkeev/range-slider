@@ -51,20 +51,20 @@
 		setValue: function (value) {
 			var width = this.$el.width(),
 				left = (value - this.options.start) * (width / (this.options.end - this.options.start)),
+				round = Math.round(value / this.options.round) * this.options.round,
 				text;
 
 			if (value >= this.options.start && value <= this.options.end) {
-				value = Math.round(value / this.options.round) * this.options.round;
 				this.$filled.width(left);
 				this.$control.css({
 					left: left
 				});
 
 				this.value = value;
-				this.$input.val(Math.round(this.value));
+				this.$input.val(round);
 
 				if (this.options.bubble) {
-					text = this.options.isFormatText ? Math.round(this.value).toString().replace(/(\s)+/g,"").replace(/(\d{1,3})(?=(?:\d{3})+$)/g,"$1 ") : Math.round(this.value);
+					text = this.options.isFormatText ? Math.round(round).toString().replace(/(\s)+/g,"").replace(/(\d{1,3})(?=(?:\d{3})+$)/g,"$1 ") : round;
 
 					this.$bubble
 						.text(text)
