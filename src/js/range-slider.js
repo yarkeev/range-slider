@@ -51,7 +51,7 @@
 		setValue: function (value) {
 			var width = this.$el.width(),
 				left = (value - this.options.start) * (width / (this.options.end - this.options.start)),
-				round = Math.round(value / this.options.round) * this.options.round,
+				round = this.options.round ? Math.floor(value / this.options.round) * this.options.round : value,
 				text;
 
 			if (value >= this.options.start && value <= this.options.end) {
@@ -64,19 +64,29 @@
 				this.$input.val(round);
 
 				if (this.options.bubble) {
-					text = this.options.isFormatText ? Math.round(round).toString().replace(/(\s)+/g,"").replace(/(\d{1,3})(?=(?:\d{3})+$)/g,"$1 ") : round;
+					text = this.options.isFormatText ? Math.round(round).toString().replace(/(\s)+/g, "").replace(/(\d{1,3})(?=(?:\d{3})+$)/g, "$1 ") : round;
 
 					this.$bubble
 						.text(text)
-						.css('margin-left', (this.$control.width() / 2) -(this.$bubble.outerWidth() / 2));
+						.css('margin-left', (this.$control.width() / 2) - (this.$bubble.outerWidth() / 2));
 				}
 			}
 		},
 
 		bindEvents: function () {
+			this.$el.on('mousedown', this.onMouseDown.bind(this));
 			this.$control.on('mousedown', this.onControlMouseDown.bind(this));
 			$(document.body).on('mousemove', this.onBodyMouseMove.bind(this));
 			$(document.body).on('mouseup', this.onBodyMouseUp.bind(this));
+		},
+
+		onMouseDown: function (event) {
+			var width,
+				value;
+
+			width = this.$el.width();
+			value = (event.pageX - this.$el.offset().left) * ((this.options.end - this.options.start) / width);
+			this.setValue(this.options.start + value);
 		},
 
 		onControlMouseDown: function (event) {
@@ -107,7 +117,7 @@
 	};
 
 	$.fn.rangeSlider = function (options) {
-		return this.each(function() {
+		return this.each(function () {
 			$(this).data('rangeSelect', new RangeSlider($(this), options));
 		});
 	};

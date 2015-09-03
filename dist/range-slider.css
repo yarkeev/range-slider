@@ -5,6 +5,7 @@
   background-color: #ccc;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .b-range-slider__filled {
   position: absolute;
@@ -24,6 +25,18 @@
   background-color: #e42d2d;
   border: solid 1px #b3b3b3;
   cursor: pointer;
+  -webkit-transition: left 0.4s;
+  -moz-transition: left 0.4s;
+  -o-transition: left 0.4s;
+  -ms-transition: left 0.4s;
+  transition: left 0.4s;
+}
+.b-range-slider_move-now .b-range-slider__control {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  transition: none;
 }
 .b-range-slider__control__bubble {
   position: absolute;

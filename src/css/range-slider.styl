@@ -6,6 +6,7 @@
 	width: 100%;
 	background-color: #ccc;
 	border-radius: 10px;
+	cursor: pointer;
 
 	&__filled {
 		position: absolute;
@@ -25,6 +26,11 @@
 		background-color: #E42D2D;
 		border: solid 1px #B3B3B3;
 		cursor: pointer;
+		transition: left .4s;
+
+		.b-range-slider_move-now & {
+			transition: none;
+		}
 
 		&__bubble {
 			position: absolute;
