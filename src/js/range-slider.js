@@ -54,6 +54,10 @@
 				round = this.options.round ? Math.floor(value / this.options.round) * this.options.round : value,
 				text;
 
+			if (this.options.round && this.options.end - value < this.options.round) {
+				round = this.options.end;
+			}
+
 			if (value >= this.options.start && value <= this.options.end) {
 				this.$filled.width(left);
 				this.$control.css({
@@ -90,6 +94,8 @@
 		},
 
 		onControlMouseDown: function (event) {
+			event.stopPropagation();
+
 			this.isMove = true;
 			this.x = event.pageX;
 
